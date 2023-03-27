@@ -1,0 +1,19 @@
+<button mat-button (click)="createNewSensorType()">New Sensor Type</button>
+<table mat-table [dataSource]="tableData" class="border p-3 m-3 container-fluid container-fluid">
+  
+    <ng-container matColumnDef="name" class="p-3 m-3">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-3 m-3"> Name </th>
+      <td mat-cell *matCellDef="let el" class="p-3 m-3"> {{el.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit/delete" class="p-3 m-3">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="p-3 m-3"> Delete </th>
+      <td mat-cell *matCellDef="let el" class="p-3 m-3">
+        <button mat-raised-button (click)="onEdit(el.sensorTypeId)" class="mx-3">Edit</button>
+        <button mat-raised-button (click)="onDelete(el.sensorTypeId)" class="mx-3">Delete</button>  
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="p-3 m-3"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="p-3 m-3"></tr>
+</table>
